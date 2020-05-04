@@ -1,2 +1,2 @@
-puts 'welcome to the Wagon'
-puts 'thanks for participate to the programming 4 everybody'
+puts "Welcome to Le Wagon"
+puts "Let's play with Ruby! 🤩"
