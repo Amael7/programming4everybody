@@ -42,11 +42,11 @@ if username == "pauline" || password == "wagon"
   puts 'tu est connecté'
 end
 
-loops & iterators
+# loops & iterators
 
 # While
 
-chiffre = 1
+chiffre = 0
 
 while chiffre < 10
   puts chiffre
@@ -68,11 +68,11 @@ for number in 1..10
   next if number.even?
   puts number
 end
-number = 0
 
 # Iterators
 
 # Loop
+number = 0
 
 loop do
   number += 1
