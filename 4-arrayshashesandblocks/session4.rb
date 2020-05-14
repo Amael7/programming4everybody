@@ -2,85 +2,114 @@
 
 # Array
 
-my_array = ["Bob", "Joe", "Zack"]
-
-p my_array
-
-my_array << 'Joyce' # equivaut a my_array.push('Joyce')
+my_array = [23, 'Pauline', 'Stephane', 'Bob', true, false]
 
 puts my_array
+p my_array
 
 # Array index
 
-  # my_array = ["Bob", "Joe", "Zack"]
-  # index =>      0      1      2
+# my_array = [23, 'Pauline', 'Stephane', 'Bob', true, false]
+# index =>    0      1           2         3     4      5
 
 puts my_array[1]
 
+# Array add element
 
-my_array.delete_at(1)
+my_array.push('John')
+my_array << 'John'
 
-puts my_array
+p my_array
+
+# Array delete element
+
+my_array.delete_at(5)
+
+p my_array
 
 # Hashes
 
-
 # Hashes create
 
-restaurant_menu = {
-  'pizza' => '10€',
-  'pasta' => '12€',
-  'steak' => '18€'
+restaurent_menu = {
+  'Pizza' => '9€',
+  'Pasta' => '12€',
+  'Steak' => '16€'
 }
+
+# restaurent_menu = Hash.new # restaurent_menu = {}
+# restaurent_menu['Pizza'] = '9€'
+# restaurent_menu['Pasta'] = '12€'
+
+puts restaurent_menu
 
 # Hashes read
 
-p restaurant_menu['pizza']
+puts restaurent_menu['Pasta']
 
-# Hashes add & delete
+# Hashes add to Hash
 
-restaurant_menu['dessert'] = '8€'
+restaurent_menu['dessert'] = '8€'
 
-p restaurant_menu
+puts restaurent_menu
 
-restaurant_menu.delete('dessert')
+# Hashes delete
 
-puts restaurant_menu
+restaurent_menu.delete('Pizza')
+
+puts restaurent_menu
 
 # iterate over an Array
 
-my_array.each do |name|
+eleves_wagon = ['Alexandre', 'Jonathan', 'Loic', 'Virginie', 'Charlotte']
+
+eleves_wagon.each do |name|
   puts name
 end
 
 # iterate over multidimensional Array
 
+wagon = [ ['Pauline', 'Mathieu', 'Donia'], ['Alexandre', 'Jonathan', 'Loic'] ]
+
+wagon.each do |sous_array|
+  p sous_array
+  sous_array.each do |name|
+    puts name
+  end
+end
+
 # iterate over a Hash
 
-restaurant_menu.each do |plat, prix|
-  puts "le plat est #{plat} au prix de : #{prix} "
+restaurent_menu = {
+  'Pizza' => '9€',
+  'Pasta' => '12€',
+  'Steak' => '16€'
+}
+
+restaurent_menu.each do |plat, prix|
+  puts " voici le plat #{plat} au prix de : #{prix}"
 end
 
 ## Methods & Blocks
 
-# definition de la méthode
+# definition de la methode
 
 def say_hello
   puts 'hello'
 end
 
-# appel de la méthode
+# appel de la methode
 
 say_hello
 
 # Method avec 1 parametre
 
 def reversed_name(name)
-  puts "ton nom a l'envers : #{name.reverse}"
+  puts name.reverse
 end
+
 # Appel de la method avec 1 argument
 
-reversed_name('Stephane')
 reversed_name('Pauline')
 
 # Method avec 2 parametres
@@ -91,14 +120,23 @@ end
 
 # Appel de la method avec 2 argument
 
-sum(3, 4)
+sum(4, 3)
 
 # splat argument
 
-def print_reversed_names(*names)
+def reversed_name(*names)
   names.each do |name|
     puts name.reverse
   end
 end
 
-print_reversed_names('Pauline', 'Stephane', 'John')
+reversed_name('Pauline', 'John', 'Stephane', 'Charlotte')
+reversed_name('Pauline')
+
+def reversed_name(name)
+  return name.reverse
+end
+
+puts reversed_name('Pauline')
+
+
