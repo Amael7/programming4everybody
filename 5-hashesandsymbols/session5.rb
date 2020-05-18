@@ -2,65 +2,110 @@
 
 # 1.Arrays
 
+# Récap sur les index dans les arrays
+
+   numbers = [1 , 3 , 2 , 34 , [2321, 34352 , 143434], 323]
+#   index =>  0   1   2   3             4               5
+#     index =>                   0      1        2
+
+p numbers
+p numbers[4]
+p numbers[4][1]
+
+# si je veux delete un element qui se trouve dans un sous array exemple le numero 34352
+# j'appele le sous array en disant numbers[4] ce qui me renvoie le sous array
+# puis j'applique la method .delete_at avec l'index de l'element que je veux supprimer en parenthèse
+# exemple :
+numbers[4].delete_at(1)
+p numbers
+
+
 # Create an array
-beatles = ['John', 'Paul', 'George', 'Ringos']
+
+beatles = ['John', 'Paul', 'George', 'Ringo']
+
+p beatles
 
 # Add element to array
-beatles << 'Henry' # ou beatles.push('Henry')
+
+beatles << 'Bob' # beatles.push('Bob')
+p beatles
 
 # Read
-puts beatles[0] # => John
-puts beatles[1] # => Paul
-puts beatles[5] # => nil, because it doesn't exist!
+
+p beatles[2]
+p beatles[7] # obtenir nil
+
 # or in a loop:
-beatles.each { |beatle| puts beatle }
+beatles.each do |beatles|
+  puts beatles
+end
 
 # Update
-beatles[3] = 'Ringo'
+
+beatles[3] = 'Ringos'
+p beatles
 
 # Delete
 beatles.delete_at(4)
-puts beatles
+p beatles
 
 # 2. Hash
 
 # Create
+
 beatles = {
   'singer' => 'John',
   'guitarist' => 'Paul',
   'bassist' => 'George',
-  'drummer' => 'Ringos'
+  'drummer' => 'Ringo'
 }
 
+p beatles
+
 # Read
-puts beatles["singer"]
-puts beatles["guitarist"]
-puts beatles["pianist"] # => nil, because it doesn't exist! I could specify a different default value when I create the hash just if I use Hash.new("a default value")
+
+p beatles['singer']
+p beatles['guitarist']
+p beatles['pianist'] # nil
+
 # or in a loop:
 beatles.each do |role, name|
-  puts "The #{role} is #{name}"
+  puts "the #{role} is #{name}"
 end
 
+# Add element to Hash
+
+beatles['pianist'] = 'Bob'
+
+p beatles
+
 # Update
-beatles['drummer'] = 'Ringo'
+
+beatles['pianist'] = 'Jack'
+p beatles
 
 # Delete
-beatles.delete('bassist')
-puts beatles
+
+beatles.delete('pianist')
+p beatles
+
 
 ##############################
 
 # Symbols
 
-my_symbol = :stephane
-puts my_symbol
-puts my_symbol.class # => Symbol
+ my_symbol = :this_is_a_symbol
+ puts my_symbol
+ p my_symbol
+ p my_symbol.class
 
 # Convert strings to symbols
-names = ['Stephane', 'Pauline', 'Jonathan']
-names.each do |name|
-  puts name.to_sym
-end
+  test = 'string'
+  p test
+  test = 'string'.to_sym
+  p test
+
 
 # Refactorisation de notre Hash beatles
 
@@ -69,72 +114,54 @@ beatles = {
   singer: 'John',
   guitarist: 'Paul',
   bassist: 'George',
-  drummer: 'Ringos'
+  drummer: 'Ringo'
 }
 
+p beatles
+# Add element to Hash
+
+beatles[:pianist] = 'Bob'
+
+
 # Read
-puts beatles[:singer]
-beatles.each do |role, name|
-  puts "The #{role} is #{name}"
-end
+p beatles[:singer]
+p beatles[:singer2]
 
 # Update
-beatles[:drummer] = 'Ringo'
 
-# Delete
-beatles.delete(:bassist)
-puts beatles
+beatles[:pianist] = 'Jack'
+p beatles
+Delete
+
+beatles.delete(:pianist)
+p beatles
 
 #############################
 
-# Bonus: the select/filter method (different name, same method!)
-# use it to filter records from a collection
-
-# With an array
-numbers = [-12, 334, 0, 31, -91, -11, 28]
-positive_numbers = numbers.filter { |n| n > 0 }
-puts positive_numbers
-
-# With an hash
-movie_ratings = {
-  pulp_fiction: 5,
-  memento: 4.5,
-  parasite: 4,
-  the_matrix: 4.5,
-  truman_show: 4,
-  full_metal_jacket: 5
-}
-my_top_movies = movie_ratings.filter { |movie, rating| rating == 5 }
-puts my_top_movies
-
-#################################
-
-# Other hash methods
-# there are a lot of powerful methods for hashes! Check them all on ruby-doc.org
-
-movie_ratings = {
-  pulp_fiction: 5,
-  memento: 4.5,
-  parasite: 4,
-  the_matrix: 4.5,
-  truman_show: 4,
-  full_metal_jacket: 5
-}
-
-# Loop through the keys
-movie_ratings.each_key do |movie|
-  puts movie
-end
-# same as
-movie_ratings.keys.each do |movie|
-  puts movie
+beatles.each_key do |role|
+  puts role
 end
 
-# Loop through the
-movie_ratings.each_value do |rating|
-  puts rating
+# la meme choses que de faire
+
+beatles.keys.each do |role|
+  puts role
 end
-# same as
-movie_ratings.values.each do |rating|
-  puts rating
+
+# afficher les valeurs
+
+beatles.each_value do |name|
+  puts name
 end
+
+# la meme choses que de faire
+
+beatles.values.each do |name|
+  puts name
+end
+
+puts beatles.key?(:singer2)
+puts beatles.key?(:drummer)
+
+
+
