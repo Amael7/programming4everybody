@@ -30,7 +30,7 @@ puts names.include?('Patrick') ? "Patrick est avec nous aujourd'hui !" : "Patric
 
 ###################
 
-# *Case statement* (a.k.a switch statement)
+# *Case statement*
 # use it when you have a lot of elsif conditions!
 
 puts "Where are you from?"
@@ -118,7 +118,7 @@ p new_array
 
 def demo
   puts 'Bonjour'
-  yield
+  yield # if block_given?
   puts 'Aurevoir'
 end
 
