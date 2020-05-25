@@ -1,97 +1,72 @@
 ## OOP  ou en Français - POO
-## Oriented-Object-Programmation ou en Français - Programmation Orienté Objet
+## Object-oriented-Programming ou en Français - Programmation Orienté Objet
 
 # Ruby est un language orienté objet
-# Comme tout les languages orienté objet, on utilise les objets pour garder de la données grâce au attributes mais aussi des comportements grâce au méthodes
-# c'est-a-dire que l'on ne manipule pas que de simple données mais des objets contenant de la données et aussi des comportements
+# Ruby comme tout les language orienté objet utilise des attributs et des methodes
+# les attributs stock de la donnèes
+# les methodes stock des comportements
 
-# pour créer un objet on crée une class, exemple :
+# comment créer un objet :
 
-class Voiture # creer une class
-  def initialize(attributes = {})   # on definie une l'initialisation de la classe c'est a dire, ce dont on a besoin pour créer une instance de notre classe
-    @couleur = attributes[:color]
-    @marque = attributes[:marque]
-    @modele = attributes[:modele]
-    @annee = attributes[:annee]
-    @marche = false
-  end
+# 'bonjour'.class # => String
 
-  def bienvenue_au_nouveau_possesseur
-    puts 'Bonjour, Félicitation pour votre nouvelle voiture!'
-    puts "je suis une #{@marque} #{@modele} de #{@annee}, de couleur #{@couleur}"
-  end
+class Voiture # => Voiture
+  # attr_reader :marche, :etat, :couleur # permet de lire de la donnèes
+  # attr_writer :couleur  # permet d'ecrire sur une données
+  attr_accessor :couleur, :marche, :etat # deux en un, permet d'ecrire et de lire de la donnèes
 
-  def demarrage
-    @marche = true
-  end
+ def initialize(attributes = {})
+  @couleur = attributes[:couleur]  # variable d'instance caractérisé par le @
+  @marque = attributes[:marque]  # variable d'instance caractérisé par le @
+  @modele = attributes[:modele]  # variable d'instance caractérisé par le @
+  @annee = attributes[:annee]  # variable d'instance caractérisé par le @
+  @marche = false  # variable d'instance caractérisé par le @
+  @etat = true  # variable d'instance caractérisé par le @
+ end
 
-  def en_marche?
-    @marche
-  end
+ def bienvenue_au_nouveau_acheteur # methode d'instance
+   puts 'Bonjour, Félicitation pour votre nouvel achat !'
+   puts "Je suis une #{@marque} #{@modele} de #{@annee} et de couleur #{@couleur}."
+ end
 
-  def self.bonjour # méthode de class
-    puts "Bonjour, je suis la class #{self}"
-  end
+ def demarrage # methode d'instance
+   @marche = true
+ end
 
-  def change_couleur!(couleur)
-    @couleur = couleur
-  end
-end
-
-voiture_de_steph = Voiture.new({color: 'blanche', marque: 'Toyota', modele: 'Corrola', annee: 1986})
-
-p voiture_de_steph
-p voiture_de_steph.class
-
-voiture_de_steph.bienvenue_au_nouveau_possesseur
-
-puts voiture_de_steph.en_marche?
-
-voiture_de_steph.demarrage
-
-puts voiture_de_steph.en_marche?
-
-
-# pourquoi on appelle une méthode avec quelque choses avant et des fois non.
-
-# def welcome
-#   puts 'Bonjour a tous!'
-# end
-
-# voiture_de_steph.welcome # error: private method 'welcome' on object voiture
-
-Voiture.bonjour # méthode de classe
-
-voiture_de_steph.change_couleur!('rouge')
-
-p voiture_de_steph
-
-class Restaurant
-  attr_reader :proprio
-  attr_writer :proprio
-  #attr_accessor
-
-  def initialize(attributes = {})
-    @nom = attributes[:nom]
-    @ville = attributes[:ville]
-    @addresse = attributes[:addresse]
-    @note = attributes[:note]
-    @proprio = attributes[:proprio]
-  end
+ def self.bonjour # Methode de class grace a l'instruction self.nom de la methode, applicable que sur la class
+   puts "Bonjour, je suis dans la classe #{self}"
+ end
 end
 
 attributes = {
-  nom: 'Chez Ricco',
-  ville: 'Marseille',
-  addresse:'Avenue Paradis',
-  proprio: 'Ricco'
+  couleur: 'blanc',
+  marque: 'Toyota',
+  modele: 'Corrola',
+  annee: 1986,
 }
 
-restau = Restaurant.new(attributes)
+# p attributes
 
-p restau.proprio
+voiture_de_pauline = Voiture.new(attributes)
 
-restau.proprio = 'Pauline'
+ p voiture_de_pauline
 
-p restau.proprio
+ voiture_de_pauline.bienvenue_au_nouveau_acheteur
 
+# p voiture_de_pauline.en_marche?
+p voiture_de_pauline.marche
+
+voiture_de_pauline.demarrage
+
+# p voiture_de_pauline.en_marche?
+p voiture_de_pauline.marche
+
+p voiture_de_pauline
+
+p voiture_de_pauline.couleur # => la couleur est 'blanc'
+
+voiture_de_pauline.couleur = 'rouge' # ré-afféctation de la données couleur de notre voiture, elle passe de blanc a rouge grâce aux attr
+
+p voiture_de_pauline.couleur # => la couleur est 'rouge'
+
+p voiture_de_pauline.etat
